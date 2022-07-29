@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PokemonThumnail = ({id, name, image, type}) => {
+export const PokemonCard = ({id, name, image, type}) => {
   const style = `thumb-container ${type}`
 
   return(
