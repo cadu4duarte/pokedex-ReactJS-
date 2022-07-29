@@ -1,44 +1,58 @@
 import React, { useEffect, useState } from 'react'
+import { PokemonCard } from '../components/Card/card';
 
 export function Home() {
   const [loadPage, setLoadPage] = useState(8);
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${loadPage}`);
+  
+  const getAllPokemons = async () => {
+    const res = await fetch(loadMore);
+    const data = await res.json();
 
-  async function getPokemons() {
-    const response = await fetch(loadMore);
-    const data = await response.json();
     setLoadMore(data.next);
+    
 
-    function loadPokemons(results) {
-      results.forEach(async (pokemon) => {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-        const data = await response.json();
+    function createPokemonObject(results) {
+      results.forEach(async pokemon => {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+        const data = await res.json();
 
-        setAllPokemons((currentList) => [...currentList, data]);
-      })
+        setAllPokemons(currentList => [...currentList, data]);
+      });
     }
-    loadPokemons(data.results);
-    console.log(`function console ${data.results}`)
+
+    createPokemonObject(data.results);
+    
   }
 
-  console.log(allPokemons);
+  console.log(allPokemons)
 
   useEffect(() => {
-    getPokemons();
+    getAllPokemons();
   }, []);
+
+  function loadMoreCards() {
+    setLoadPage(loadPage + 8);
+    getAllPokemons()
+  }
 
   return (
     <div className="app-container">
       <h1>Pokemons list</h1>
-      <div>
-        {allPokemons.map((pokemon) => {
-          <div className="pokemonBox">
-            <img src={pokemon.sprites.other.dream_world.front_default}/>
-            <p>{pokemon.name}</p>
-          </div>
-        })}
+      <div className="pokemon-container">
+      {allPokemons.map((pokemon, index) => 
+          <PokemonCard 
+            id={pokemon.id}
+            name={pokemon.name}
+            image={pokemon.sprites.other.dream_world.front_default}
+            type={pokemon.types[0].type.name}
+            key={index}
+          />  
+        )}
       </div>
+      <button className="load-more" onClick={() => loadMoreCards()}>Load more</button>
     </div>
+
   )
 }
