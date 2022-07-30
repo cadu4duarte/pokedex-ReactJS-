@@ -1,0 +1,13 @@
+.app-container {
+  width: 100%;
+  border: 1px solid gray;
+  
+}
+
+.pokemon-container {
+  display: flex;
+  width: 90%;
+  border: 1px solid yellow;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
