@@ -1,22 +1,23 @@
 import React from 'react';
+import "./style.css";
 
-export const PokemonCard = ({id, name, image, type}) => {
-  const style = `thumb-container ${type}`
+export const PokemonCard = ({name, image}) => {
+  
 
   return(
-    <div className={style}>
+    <div className="cardContainer">
       <div className="number">
-        <small>#0{id}</small>
-
         <img src={image} alt={name}/>
-        
-        <div className="detail-wrapper">
+        <div className="detailCard">
           <h3>{name}</h3>
-          <small>Type: {type}</small>
-
         </div>
-
       </div>
+
+      <div className="btnBox">
+        <button>Delete</button>
+        <button>Edit</button>
+      </div>
+      
 
     </div>
   );
