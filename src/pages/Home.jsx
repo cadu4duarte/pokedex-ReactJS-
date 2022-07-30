@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PokemonCard } from '../components/Card/card';
+import "./style.css";
 
 export function Home() {
   const [loadPage, setLoadPage] = useState(8);
