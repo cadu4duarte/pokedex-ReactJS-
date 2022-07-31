@@ -1,7 +1,11 @@
 .app-container {
   width: 100%;
   border: 1px solid gray;
-  
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .pokemon-container {

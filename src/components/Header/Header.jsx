@@ -1,18 +1,21 @@
-import React from 'react'
+import React from 'react';
+import "./style.css";
 
 export function Header() {
   return (
     <header>
-      <section>
+      <section className="titleContainer">
         <h1>Pokedex</h1>
       </section>
 
-      <section>
-        <input type="text" placeholder="Faça sua busca..."/>
+      <section className="inputContainer">
+        <div>
+          <input type="text" placeholder="Faça sua busca..."/>
 
-        <button>
-          BUSCAR
-        </button>
+          <button>
+            BUSCAR
+          </button>
+        </div>
       </section>
 
     </header>

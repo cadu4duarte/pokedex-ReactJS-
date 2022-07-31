@@ -40,7 +40,11 @@ export function Home() {
 
   return (
     <div className="app-container">
-      <h1>Pokemons list</h1>
+      <div className="topContainer">
+        <h1>Resultado da busca: </h1>
+        <button>Novo Card</button>
+      </div>
+      
       <div className="pokemon-container">
       {allPokemons.map((pokemon, index) => 
           <PokemonCard 
