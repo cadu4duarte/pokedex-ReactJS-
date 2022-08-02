@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { PokemonCard } from '../components/Card/card';
+import { SideModal } from '../components/SideModal/SideModal';
 import "./style.css";
 
 export function Home() {
   const [loadPage, setLoadPage] = useState(8);
   const [allPokemons, setAllPokemons] = useState([]);
   const [loadMore, setLoadMore] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${loadPage}`);
+  const [sideModalOpen, setSideModalOpen] = useState(false);
   
   const getAllPokemons = async () => {
     const res = await fetch(loadMore);
@@ -38,11 +40,20 @@ export function Home() {
     getAllPokemons()
   }
 
+  //side modal
+  function openCloseSideModal() {
+    setSideModalOpen(modal => !modal);
+  }
+
   return (
+
     <div className="app-container">
+      <SideModal 
+      valueSideModal={sideModalOpen} 
+      setValueSideModal={setSideModalOpen}/>
       <div className="topContainer">
         <h1>Resultado da busca: </h1>
-        <button>Novo Card</button>
+        <button onClick={ openCloseSideModal }>Novo Card</button>
       </div>
       
       <div className="pokemon-container">
