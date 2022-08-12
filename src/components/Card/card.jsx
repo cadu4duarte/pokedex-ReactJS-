@@ -1,5 +1,7 @@
 import React from 'react';
 import "./style.css";
+import lixeira from "../../assets/lixeira.svg";
+import edit from "../../assets/edit.svg";
 
 export const PokemonCard = ({name, image}) => {
   
@@ -14,8 +16,14 @@ export const PokemonCard = ({name, image}) => {
       </div>
 
       <div className="btnBox">
-        <button>Delete</button>
-        <button>Edit</button>
+        <button>
+          <img src={lixeira}/>
+          Delete
+        </button>
+        <button>
+          <img src={edit}/>
+          Edit
+        </button>
       </div>
       
 
