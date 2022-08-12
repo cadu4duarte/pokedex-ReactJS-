@@ -1,5 +1,6 @@
 import React from 'react';
 import "./style.css";
+import lupa from "../../assets/lupa.svg"
 
 export function Header() {
   return (
@@ -13,7 +14,7 @@ export function Header() {
           <input type="text" placeholder="Faça sua busca..."/>
 
           <button>
-            BUSCAR
+            <img src={lupa} alt="lupa"/>
           </button>
         </div>
       </section>
