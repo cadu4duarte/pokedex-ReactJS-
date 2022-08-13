@@ -1,0 +1,64 @@
+.sideModal {
+  width: 40%;
+  height: 100%;
+  background: white;
+  margin-left: 60%;
+}
+
+.modalHeader {
+  padding-top: 10px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 43px;
+}
+
+.modalHeader h1 {
+  color: #5F1478;
+  font: normal normal bold 32px/40px Muli;
+}
+
+.modalContent {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modalContent label {
+  padding-top: 43px;
+  font-size: 18px;
+  font-family: bold sans-serif;
+  color: #454545;
+}
+
+.modalContent input {
+  width: 100%;
+  height: 60px;
+  border: 1px solid #B9B9B9;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+
+::-webkit-file-upload-button {
+  border-radius: 8px;
+  border: 1px solid #E76316;
+  background: white;
+  color: #E76316;
+  width: 224px;
+  height: 48px;
+  margin: 5px;
+}
+
+.btnCreateBox {
+  text-align: right;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btnCreateBox button {
+  width: 167px;
+  height: 48px;
+  border-radius: 8px;
+  background: #E76316;
+  color: white;
+  border: none;
+}
