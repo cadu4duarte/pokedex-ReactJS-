@@ -1,73 +1,69 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { PokemonCard } from '../components/Card/card';
 import { SideModal } from '../components/SideModal/SideModal';
+import { MainModal } from '../components/MainModal/MainModal';
+import {AllPokemonContext} from "../components/Context/AllPokemon";
 import "./style.css";
 
 export function Home() {
-  const [loadPage, setLoadPage] = useState(8);
-  const [allPokemons, setAllPokemons] = useState([]);
-  const [loadMore, setLoadMore] = useState(`https://pokeapi.co/api/v2/pokemon?limit=${loadPage}`);
+  const {allPokemons, loadMoreCards} = useContext(AllPokemonContext);
   const [sideModalOpen, setSideModalOpen] = useState(false);
+  const [mainModal, setMainModal] = useState(false);
   
-  const getAllPokemons = async () => {
-    const res = await fetch(loadMore);
-    const data = await res.json();
-
-    setLoadMore(data.next);
-    
-
-    function createPokemonObject(results) {
-      results.forEach(async pokemon => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
-        const data = await res.json();
-
-        setAllPokemons(currentList => [...currentList, data]);
-      });
-    }
-
-    createPokemonObject(data.results);
-    
-  }
-
-  console.log(allPokemons)
-
-  useEffect(() => {
-    getAllPokemons();
-  }, []);
-
-  function loadMoreCards() {
-    setLoadPage(loadPage + 8);
-    getAllPokemons()
-  }
-
+  
   //side modal
   function openCloseSideModal() {
     setSideModalOpen(modal => !modal);
   }
 
+  function openCloseMainModal() {
+    setMainModal(modal => !modal);
+  }
+  
   return (
 
     <div className="app-container">
       <SideModal 
       valueSideModal={sideModalOpen} 
-      setValueSideModal={setSideModalOpen}/>
+      setValueSideModal={ openCloseSideModal }/>
+
+      <MainModal 
+      valueMainModal={mainModal}
+      setMainModal={ openCloseMainModal }/>
+      
       <div className="topContainer">
         <h1>Resultado da busca: </h1>
         <button onClick={ openCloseSideModal }>Novo Card</button>
       </div>
+
+      {allPokemons.length <= 0 ?
+        <div>
+          <h1>Nada encontrado</h1>
+        </div>
+
+        :
+        
+        (<>
+        <div className="pokemon-container">
       
-      <div className="pokemon-container">
-      {allPokemons.map((pokemon, index) => 
-          <PokemonCard 
+        {allPokemons.map((pokemon, index) => 
+            <PokemonCard
             id={pokemon.id}
             name={pokemon.name}
             image={pokemon.sprites.other.dream_world.front_default}
             type={pokemon.types[0].type.name}
-            key={index}
-          />  
-        )}
-      </div>
-      <button className="load-more" onClick={() => loadMoreCards()}>Load more</button>
+            key={index} />
+          )}
+        </div>
+  
+        <div className="btnLoadBox">
+          <button className="load-more" onClick={() => loadMoreCards()}>Load more</button>
+        </div>
+        </>)
+      }
+      
+      
+      
     </div>
 
   )
