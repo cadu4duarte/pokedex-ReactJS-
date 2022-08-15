@@ -13,7 +13,7 @@ export function Header() {
 
   function saveDataHeaderStorage() {
     const data = singlePokemon.filter((item) => item.name === dataHeader);
-    console.log(data)
+    setAllPokemons(data)
   }
 
   return (

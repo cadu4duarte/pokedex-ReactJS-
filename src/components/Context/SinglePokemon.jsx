@@ -32,7 +32,7 @@ export function SinglePokemonProvider({children}) {
   }, []);
 
   return (
-    <SinglePokemonContext.Provider value={singlePokemon}>
+    <SinglePokemonContext.Provider value={{singlePokemon}}>
       {children}
     </SinglePokemonContext.Provider>
   )
