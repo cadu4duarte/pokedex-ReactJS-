@@ -3,8 +3,7 @@ import "./style.css";
 import lixeira from "../../assets/lixeira.svg";
 import edit from "../../assets/edit.svg";
 
-export const PokemonCard = ({name, image}) => {
-  
+export const PokemonCard = ({name, image, openModal}) => {
 
   return(
     <div className="cardContainer">
@@ -16,13 +15,13 @@ export const PokemonCard = ({name, image}) => {
       </div>
 
       <div className="btnBox">
-        <button>
+        <button onClick={openModal}>
           <img src={lixeira}/>
-          Delete
+          Deletar
         </button>
         <button>
           <img src={edit}/>
-          Edit
+          Editar
         </button>
       </div>
       
