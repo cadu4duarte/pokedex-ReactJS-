@@ -1,5 +1,74 @@
 .mainModal {
-  width: 60%;
-  height: 30%;
+  width: 438px;
+  height: 400px;
   margin: 0 auto;
+  margin-top: 100px;
+  background: white;
+}
+
+.modalContainer {
+  margin-top: 10px;
+  height: 300px;
+}
+
+.imgBox {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 159px;
+  height: 159px;
+ 
+  border-radius: 50%;
+ 
+}
+
+.imgBox img {
+  width: 68px;
+  height: 68px;
+  margin: 40px;
+  margin-top: 50px;
+}
+
+.textBox {
+  margin-top: 20px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+.textBox h3 {
+  text-align: center;
+  font-size: 32px;
+  color: #DB2525;
+}
+
+.textBox p {
+  font-size: 12px;
+  text-align: center;
+  color: #454545;
+}
+
+.modalBtnBox {
+  height: 100px;
+  text-align: center;
+}
+
+.modalBtnBox button {
+  width: 165px;
+  height: 48px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 8.5px;
+  margin-right: 8.5px;
+  border-radius: 8px;
+}
+
+.deleteBtn {
+  background: #DB2525;
+  color: white;
+  border: none;
+}
+
+.cancelBtn {
+  border: 1px solid #DB2525;
+  color: #DB2525;
+  background: white;
 }
